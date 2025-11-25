@@ -1,0 +1,31 @@
+// Cloudinary Configuration
+const cloudinaryConfig = {
+    cloudName: 'dyxw1w0sh',    // Ganti dengan cloud name Anda
+    uploadPreset: 'brew_bean_products'
+};
+
+// Upload image to Cloudinary
+async function uploadToCloudinary(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', cloudinaryConfig.uploadPreset);
+    formData.append('cloud_name', cloudinaryConfig.cloudName);
+
+    try {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloudName}/image/upload`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Upload failed');
+        }
+
+        const data = await response.json();
+        return data.secure_url; // Return image URL
+
+    } catch (error) {
+        console.error('Cloudinary upload error:', error);
+        throw error;
+    }
+}

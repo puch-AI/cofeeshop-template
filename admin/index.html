@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- Cloudinary Upload Widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Brew Bean</title>
     
-    <!-- Pakai CSS yang sama dengan website utama -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,46 +15,45 @@
         .admin-wrapper {
             background: var(--light);
             min-height: 100vh;
-            padding: 2rem;
+            padding: 1rem;
         }
         
         .admin-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: var(--white);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             overflow: hidden;
         }
         
         .admin-header {
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: var(--white);
-            padding: 2rem;
-            text-align: center;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .admin-logo {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
         .admin-main {
-            padding: 2rem;
             display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            min-height: 600px;
+            grid-template-columns: 280px 1fr;
+            min-height: 80vh;
         }
         
         .admin-sidebar {
             background: var(--light);
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
+            border-right: 1px solid var(--gray-light);
         }
         
         .admin-menu {
@@ -68,11 +68,12 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             color: var(--dark);
             text-decoration: none;
             border-radius: var(--radius);
             transition: var(--transition);
+            font-weight: 500;
         }
         
         .admin-menu a:hover,
@@ -82,9 +83,10 @@
         }
         
         .admin-content {
-            background: var(--light);
-            border-radius: var(--radius);
             padding: 2rem;
+            background: var(--white);
+            overflow-y: auto;
+            max-height: 80vh;
         }
         
         .content-section {
@@ -98,14 +100,14 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
         
         .stat-card {
-            background: var(--white);
+            background: var(--light);
             padding: 1.5rem;
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             text-align: center;
             border-left: 4px solid var(--primary);
         }
@@ -114,6 +116,7 @@
             font-size: 2rem;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 0.5rem;
         }
         
         .form-group {
@@ -124,14 +127,21 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--dark);
         }
         
         .form-control {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.75rem 1rem;
             border: 2px solid var(--gray-light);
             border-radius: var(--radius);
             font-family: 'Comic Sans MS', cursive;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
         }
         
         .btn-admin {
@@ -142,10 +152,104 @@
             border-radius: var(--radius);
             cursor: pointer;
             font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .btn-admin:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-light);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gray);
+        }
+        
+        .image-upload {
+            border: 2px dashed var(--gray);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .image-upload:hover {
+            border-color: var(--primary);
+        }
+        
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card-admin {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 2px solid var(--gray-light);
+        }
+        
+        .product-image-admin {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .table th,
+        .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .table th {
+            background: var(--light);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -158,17 +262,14 @@
                     <i class="fas fa-mug-hot"></i>
                     <span>Brew Bean Admin</span>
                 </div>
-                <div class="admin-nav">
-                    <a href="../index.html" class="btn" target="_blank">
+                <div>
+                    <a href="../index.html" class="btn-admin btn-secondary" target="_blank">
                         <i class="fas fa-eye"></i> Lihat Website
-                    </a>
-                    <a href="#" class="btn">
-                        <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
             </header>
 
-            <!-- Admin Main Content -->
+            <!-- Admin Main -->
             <main class="admin-main">
                 <!-- Sidebar -->
                 <aside class="admin-sidebar">
@@ -183,112 +284,399 @@
                             <i class="fas fa-coffee"></i> Kelola Produk
                         </a></li>
                         <li><a href="#promos" onclick="showSection('promos')">
-                            <i class="fas fa-tag"></i> Promo & Diskon
+                            <i class="fas fa-tag"></i> Kelola Promo
                         </a></li>
                         <li><a href="#orders" onclick="showSection('orders')">
                             <i class="fas fa-shopping-cart"></i> Kelola Pesanan
+                        </a></li>
+                        <li><a href="#settings" onclick="showSection('settings')">
+                            <i class="fas fa-cogs"></i> Pengaturan
                         </a></li>
                     </ul>
                 </aside>
 
                 <!-- Content Area -->
                 <section class="admin-content">
-                    <!-- Dashboard -->
+                    <!-- Alert Message -->
+                    <div id="alertMessage" class="alert alert-success">
+                        Perubahan berhasil disimpan!
+                    </div>
+
+                    <!-- Dashboard Section -->
                     <div id="dashboard" class="content-section active">
-                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Dashboard Overview</h2>
+                        <h2 style="color: var(--primary); margin-bottom: 1rem;">Dashboard Overview</h2>
+                        <p style="color: var(--gray-dark); margin-bottom: 2rem;">Kelola semua konten website Brew Bean dari sini</p>
                         
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-number">156</div>
+                                <div class="stat-number" id="totalProducts">0</div>
+                                <div>Total Produk</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalPromos">0</div>
+                                <div>Promo Aktif</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalOrders">0</div>
                                 <div>Pesanan Hari Ini</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number">Rp 4.2jt</div>
-                                <div>Pendapatan</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-number">24</div>
-                                <div>Produk Aktif</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-number">89%</div>
-                                <div>Kepuasan Pelanggan</div>
+                                <div class="stat-number">100%</div>
+                                <div>Kontrol Penuh</div>
                             </div>
                         </div>
 
-                        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius);">
+                        <div style="background: var(--light); padding: 2rem; border-radius: var(--radius-lg); margin-top: 2rem;">
                             <h3 style="color: var(--primary); margin-bottom: 1rem;">Quick Actions</h3>
                             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                                 <button class="btn-admin" onclick="showSection('products')">
-                                    <i class="fas fa-plus"></i> Tambah Produk
+                                    <i class="fas fa-plus"></i> Tambah Produk Baru
                                 </button>
                                 <button class="btn-admin" onclick="showSection('promos')">
-                                    <i class="fas fa-tag"></i> Buat Promo
+                                    <i class="fas fa-tag"></i> Buat Promo Baru
                                 </button>
                                 <button class="btn-admin" onclick="showSection('hero')">
-                                    <i class="fas fa-edit"></i> Edit Hero
+                                    <i class="fas fa-edit"></i> Edit Tampilan Utama
+                                </button>
+                                <button class="btn-admin" onclick="exportData()">
+                                    <i class="fas fa-download"></i> Export Data
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Hero Editor -->
+                    <!-- Hero Section Editor -->
                     <div id="hero" class="content-section">
                         <h2 style="color: var(--primary); margin-bottom: 2rem;">Edit Hero Section</h2>
                         
                         <div class="form-group">
-                            <label>Judul Hero</label>
-                            <input type="text" class="form-control" value="Premium Coffee Experience">
+                            <label>Judul Utama</label>
+                            <input type="text" class="form-control" id="heroTitle" placeholder="Masukkan judul hero">
                         </div>
                         
                         <div class="form-group">
-                            <label>Deskripsi</label>
-                            <textarea class="form-control" rows="3">Rasakan kehangatan dan cita rasa kopi spesial dari biji pilihan terbaik Indonesia</textarea>
+                            <label>Deskripsi Hero</label>
+                            <textarea class="form-control" id="heroDescription" rows="3" placeholder="Masukkan deskripsi hero"></textarea>
                         </div>
                         
-                        <button class="btn-admin">
-                            <i class="fas fa-save"></i> Simpan Perubahan
+                        <div class="form-group">
+                            <label>Teks Tombol 1</label>
+                            <input type="text" class="form-control" id="heroButton1" placeholder="Teks tombol pertama">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Teks Tombol 2</label>
+                            <input type="text" class="form-control" id="heroButton2" placeholder="Teks tombol kedua">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gambar Hero</label>
+                            <div class="image-upload" onclick="document.getElementById('heroImageUpload').click()">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                                <p>Klik untuk upload gambar hero</p>
+                                <small>Rekomendasi: 1200x800 px</small>
+                                <img id="heroImagePreview" class="image-preview" alt="Preview">
+                            </div>
+                            <input type="file" id="heroImageUpload" accept="image/*" style="display: none;" onchange="previewImage(this, 'heroImagePreview')">
+                        </div>
+                        
+                        <button class="btn-admin" onclick="saveHeroSection()">
+                            <i class="fas fa-save"></i> Simpan Perubahan Hero
                         </button>
                     </div>
 
                     <!-- Products Management -->
                     <div id="products" class="content-section">
-                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Produk</h2>
-                        <p>Fitur kelola produk akan ditambahkan di sini...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 2rem;">
+                            <h2 style="color: var(--primary);">Kelola Produk</h2>
+                            <button class="btn-admin" onclick="showAddProductForm()">
+                                <i class="fas fa-plus"></i> Tambah Produk Baru
+                            </button>
+                        </div>
+
+                        <!-- Add Product Form -->
+                        <div id="addProductForm" style="display: none; background: var(--light); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+                            <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Tambah Produk Baru</h3>
+                            
+                            <div class="form-group">
+                                <label>Nama Produk</label>
+                                <input type="text" class="form-control" id="productName" placeholder="Contoh: Signature Latte">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <select class="form-control" id="productCategory">
+                                    <option value="coffee">Kopi</option>
+                                    <option value="non-coffee">Non-Kopi</option>
+                                    <option value="food">Makanan</option>
+                                    <option value="snack">Snack</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea class="form-control" id="productDescription" rows="3" placeholder="Deskripsi produk"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input type="number" class="form-control" id="productPrice" placeholder="35000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Harga Asli (opsional)</label>
+                                <input type="number" class="form-control" id="productOriginalPrice" placeholder="40000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Gambar Produk</label>
+                                <div class="image-upload" onclick="document.getElementById('productImageUpload').click()">
+                                    <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                                    <p>Klik untuk upload gambar produk</p>
+                                    <img id="productImagePreview" class="image-preview" alt="Preview">
+                                </div>
+                                <input type="file" id="productImageUpload" accept="image/*" style="display: none;" onchange="previewImage(this, 'productImagePreview')">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Badge</label>
+                                <select class="form-control" id="productBadge">
+                                    <option value="">Tidak ada badge</option>
+                                    <option value="bestseller">Bestseller</option>
+                                    <option value="trending">Trending</option>
+                                    <option value="new">New</option>
+                                </select>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn-admin" onclick="saveProduct()">
+                                    <i class="fas fa-save"></i> Simpan Produk
+                                </button>
+                                <button class="btn-admin btn-secondary" onclick="hideAddProductForm()">
+                                    <i class="fas fa-times"></i> Batal
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Products List -->
+                        <div id="productsList">
+                            <h3 style="color: var(--primary); margin-bottom: 1rem;">Daftar Produk</h3>
+                            <div class="products-grid" id="productsGrid">
+                                <!-- Products will be loaded here -->
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Promos Management -->
                     <div id="promos" class="content-section">
                         <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Promo</h2>
-                        <p>Fitur kelola promo akan ditambahkan di sini...</p>
+                        <p>Fitur kelola promo akan segera tersedia...</p>
                     </div>
 
                     <!-- Orders Management -->
                     <div id="orders" class="content-section">
                         <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Pesanan</h2>
-                        <p>Fitur kelola pesanan akan ditambahkan di sini...</p>
+                        <p>Fitur kelola pesanan akan segera tersedia...</p>
+                    </div>
+
+                    <!-- Settings -->
+                    <div id="settings" class="content-section">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Pengaturan Website</h2>
+                        <p>Fitur pengaturan akan segera tersedia...</p>
                     </div>
                 </section>
             </main>
         </div>
     </div>
 
+    <script src="admin.js"></script>
+
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Update active menu
-            document.querySelectorAll('.admin-menu a').forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
+// Global Functions
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show selected section
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Update active menu
+    document.querySelectorAll('.admin-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+function previewImage(input, previewId) {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const preview = document.getElementById(previewId);
+            preview.src = e.target.result;
+            preview.style.display = 'block';
         }
-    </script>
+        reader.readAsDataURL(file);
+    }
+}
+
+// Simple Admin Functions (Tanpa class complex)
+function saveHeroSection() {
+    const heroData = {
+        title: document.getElementById('heroTitle').value,
+        description: document.getElementById('heroDescription').value,
+        button1: document.getElementById('heroButton1').value,
+        button2: document.getElementById('heroButton2').value,
+        image: document.getElementById('heroImagePreview').src || ''
+    };
+
+    localStorage.setItem('brewBeanHero', JSON.stringify(heroData));
+    showAlert('Hero section berhasil disimpan!');
+}
+
+function showAddProductForm() {
+    document.getElementById('addProductForm').style.display = 'block';
+}
+
+function hideAddProductForm() {
+    document.getElementById('addProductForm').style.display = 'none';
+    resetProductForm();
+}
+
+function resetProductForm() {
+    document.getElementById('productName').value = '';
+    document.getElementById('productCategory').value = 'coffee';
+    document.getElementById('productDescription').value = '';
+    document.getElementById('productPrice').value = '';
+    document.getElementById('productOriginalPrice').value = '';
+    document.getElementById('productBadge').value = '';
+    document.getElementById('productImagePreview').style.display = 'none';
+    document.getElementById('productImagePreview').src = '';
+}
+
+function saveProduct() {
+    const product = {
+        name: document.getElementById('productName').value,
+        category: document.getElementById('productCategory').value,
+        description: document.getElementById('productDescription').value,
+        price: parseInt(document.getElementById('productPrice').value) || 0,
+        originalPrice: parseInt(document.getElementById('productOriginalPrice').value) || null,
+        image: document.getElementById('productImagePreview').src || '',
+        badge: document.getElementById('productBadge').value || ''
+    };
+
+    if (!product.name || !product.price) {
+        showAlert('Nama produk dan harga harus diisi!', 'error');
+        return;
+    }
+
+    // Get existing products or create new array
+    const products = JSON.parse(localStorage.getItem('brewBeanProducts')) || [];
+    products.push(product);
+    localStorage.setItem('brewBeanProducts', JSON.stringify(products));
+    
+    loadProducts();
+    hideAddProductForm();
+    loadDashboardStats();
+    showAlert('Produk berhasil ditambahkan!');
+}
+
+function loadProducts() {
+    const products = JSON.parse(localStorage.getItem('brewBeanProducts')) || [];
+    const productsGrid = document.getElementById('productsGrid');
+    productsGrid.innerHTML = '';
+
+    products.forEach((product, index) => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card-admin';
+        productCard.innerHTML = `
+            <img src="${product.image || 'https://via.placeholder.com/300x150?text=No+Image'}" 
+                 class="product-image-admin" alt="${product.name}">
+            <h4>${product.name}</h4>
+            <p style="color: var(--gray-dark); margin: 0.5rem 0;">${product.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: var(--primary);">Rp ${product.price.toLocaleString()}</strong>
+                ${product.badge ? `<span style="background: var(--primary); color: white; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.8rem;">${product.badge}</span>` : ''}
+            </div>
+            <div class="product-actions">
+                <button class="btn-admin" onclick="editProduct(${index})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="btn-admin btn-secondary" onclick="deleteProduct(${index})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <i class="fas fa-trash"></i> Hapus
+                </button>
+            </div>
+        `;
+        productsGrid.appendChild(productCard);
+    });
+}
+
+function editProduct(index) {
+    showAlert('Fitur edit akan segera tersedia!');
+}
+
+function deleteProduct(index) {
+    if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+        const products = JSON.parse(localStorage.getItem('brewBeanProducts')) || [];
+        products.splice(index, 1);
+        localStorage.setItem('brewBeanProducts', JSON.stringify(products));
+        loadProducts();
+        loadDashboardStats();
+        showAlert('Produk berhasil dihapus!');
+    }
+}
+
+function loadDashboardStats() {
+    const products = JSON.parse(localStorage.getItem('brewBeanProducts')) || [];
+    document.getElementById('totalProducts').textContent = products.length;
+}
+
+function loadHeroData() {
+    const heroData = JSON.parse(localStorage.getItem('brewBeanHero')) || {};
+    if (heroData.title) document.getElementById('heroTitle').value = heroData.title;
+    if (heroData.description) document.getElementById('heroDescription').value = heroData.description;
+    if (heroData.button1) document.getElementById('heroButton1').value = heroData.button1;
+    if (heroData.button2) document.getElementById('heroButton2').value = heroData.button2;
+    if (heroData.image) {
+        document.getElementById('heroImagePreview').src = heroData.image;
+        document.getElementById('heroImagePreview').style.display = 'block';
+    }
+}
+
+function showAlert(message, type = 'success') {
+    const alert = document.getElementById('alertMessage');
+    alert.textContent = message;
+    alert.className = `alert alert-${type}`;
+    alert.style.display = 'block';
+    
+    setTimeout(() => {
+        alert.style.display = 'none';
+    }, 3000);
+}
+
+function exportData() {
+    const data = {
+        products: JSON.parse(localStorage.getItem('brewBeanProducts')) || [],
+        hero: JSON.parse(localStorage.getItem('brewBeanHero')) || {}
+    };
+    
+    const dataStr = JSON.stringify(data, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = 'brewbean-data-backup.json';
+    link.click();
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+    loadDashboardStats();
+    loadHeroData();
+    loadProducts();
+});
+</script>
 </body>
 </html>

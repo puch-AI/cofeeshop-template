@@ -246,6 +246,35 @@ function getNotificationIcon(type) {
     return icons[type] || 'info-circle';
 }
 
+// Load data from localStorage
+function loadCMSData() {
+    // Load hero data
+    const heroData = JSON.parse(localStorage.getItem('brewBeanHero'));
+    if (heroData) {
+        if (heroData.title) {
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) heroTitle.textContent = heroData.title;
+        }
+        if (heroData.description) {
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = heroData.description;
+        }
+    }
+
+    // Load products data
+    const productsData = JSON.parse(localStorage.getItem('brewBeanProducts'));
+    if (productsData && productsData.length > 0) {
+        // You can implement product loading here
+        console.log('Products loaded from CMS:', productsData);
+    }
+}
+
+// Call this function when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    loadCMSData();
+    // ... other init functions
+});
+
 // Add some basic CSS for notifications
 const notificationStyles = `
     .notification {
