@@ -1,0 +1,89 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+# Media settings
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Site settings
+site_url: "https://puch-ai.github.io/codeshop-template"
+display_url: "https://puch-ai.github.io/codeshop-template"
+logo_url: "/images/logo.png"
+
+# Collections
+collections:
+  # HERO SECTION
+  - name: "hero"
+    label: "🏠 Hero Section"
+    editor:
+      preview: false
+    files:
+      - file: "data/hero.json"
+        label: "Hero Content"
+        name: "hero-content"
+        fields:
+          - { label: "Judul Hero", name: "title", widget: "string", default: "Premium Coffee Experience" }
+          - { label: "Deskripsi Hero", name: "subtitle", widget: "text", default: "Rasakan kehangatan dan cita rasa kopi spesial dari biji pilihan terbaik Indonesia" }
+          - { label: "Teks Tombol 1", name: "button1_text", widget: "string", default: "Pesan Sekarang" }
+          - { label: "Teks Tombol 2", name: "button2_text", widget: "string", default: "Lihat Lokasi" }
+          - { label: "Gambar Hero", name: "image", widget: "image", default: "/images/hero-slider/slide1.jpg" }
+
+  # PRODUCTS COLLECTION
+  - name: "products"
+    label: "☕ Produk & Menu"
+    folder: "data/products"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    editor:
+      preview: false
+    fields:
+      - { label: "Nama Produk", name: "name", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["coffee", "non-coffee", "food", "snack"] }
+      - { label: "Deskripsi", name: "description", widget: "text" }
+      - { label: "Harga", name: "price", widget: "number", value_type: "int" }
+      - { label: "Harga Asli (opsional)", name: "original_price", widget: "number", value_type: "int", required: false }
+      - { label: "Gambar Produk", name: "image", widget: "image" }
+      - { label: "Badge", name: "badge", widget: "select", options: ["", "bestseller", "trending", "new"], required: false }
+      - { label: "Stok Tersedia", name: "stock", widget: "number", value_type: "int", default: 100 }
+
+  # PROMOS COLLECTION
+  - name: "promos"
+    label: "🎯 Promo & Diskon"
+    folder: "data/promos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Promo", name: "title", widget: "string" }
+      - { label: "Deskripsi Promo", name: "description", widget: "text" }
+      - { label: "Kode Promo", name: "code", widget: "string" }
+      - { label: "Tipe Promo", name: "type", widget: "select", options: ["discount", "bogo", "freeship", "member"] }
+      - { label: "Gambar Promo", name: "image", widget: "image", required: false }
+      - { label: "Tanggal Mulai", name: "start_date", widget: "datetime" }
+      - { label: "Tanggal Berakhir", name: "end_date", widget: "datetime" }
+      - { label: "Aktif", name: "active", widget: "boolean", default: true }
+
+  # WEBSITE SETTINGS
+  - name: "settings"
+    label: "⚙️ Pengaturan Website"
+    editor:
+      preview: false
+    files:
+      - file: "data/settings.json"
+        label: "Website Settings"
+        name: "website-settings"
+        fields:
+          - { label: "Nama Coffee Shop", name: "shop_name", widget: "string", default: "Brew Bean" }
+          - { label: "Deskripsi Website", name: "description", widget: "text" }
+          - { label: "Nomor Telepon", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Alamat", name: "address", widget: "text" }
+          - { label: "Jam Operasional", name: "hours", widget: "text" }
+          - { label: "Logo Website", name: "logo", widget: "image" }
