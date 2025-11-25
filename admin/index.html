@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Brew Bean</title>
+    
+    <!-- Pakai CSS yang sama dengan website utama -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .admin-wrapper {
+            background: var(--light);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        
+        .admin-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .admin-main {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            min-height: 600px;
+        }
+        
+        .admin-sidebar {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+        
+        .admin-menu {
+            list-style: none;
+        }
+        
+        .admin-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .admin-menu a:hover,
+        .admin-menu a.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .admin-content {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 2rem;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius);
+            font-family: 'Comic Sans MS', cursive;
+        }
+        
+        .btn-admin {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-admin:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <div class="admin-container">
+            <!-- Admin Header -->
+            <header class="admin-header">
+                <div class="admin-logo">
+                    <i class="fas fa-mug-hot"></i>
+                    <span>Brew Bean Admin</span>
+                </div>
+                <div class="admin-nav">
+                    <a href="../index.html" class="btn" target="_blank">
+                        <i class="fas fa-eye"></i> Lihat Website
+                    </a>
+                    <a href="#" class="btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </header>
+
+            <!-- Admin Main Content -->
+            <main class="admin-main">
+                <!-- Sidebar -->
+                <aside class="admin-sidebar">
+                    <ul class="admin-menu">
+                        <li><a href="#dashboard" class="active" onclick="showSection('dashboard')">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a></li>
+                        <li><a href="#hero" onclick="showSection('hero')">
+                            <i class="fas fa-home"></i> Hero Section
+                        </a></li>
+                        <li><a href="#products" onclick="showSection('products')">
+                            <i class="fas fa-coffee"></i> Kelola Produk
+                        </a></li>
+                        <li><a href="#promos" onclick="showSection('promos')">
+                            <i class="fas fa-tag"></i> Promo & Diskon
+                        </a></li>
+                        <li><a href="#orders" onclick="showSection('orders')">
+                            <i class="fas fa-shopping-cart"></i> Kelola Pesanan
+                        </a></li>
+                    </ul>
+                </aside>
+
+                <!-- Content Area -->
+                <section class="admin-content">
+                    <!-- Dashboard -->
+                    <div id="dashboard" class="content-section active">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Dashboard Overview</h2>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">156</div>
+                                <div>Pesanan Hari Ini</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">Rp 4.2jt</div>
+                                <div>Pendapatan</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24</div>
+                                <div>Produk Aktif</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">89%</div>
+                                <div>Kepuasan Pelanggan</div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius);">
+                            <h3 style="color: var(--primary); margin-bottom: 1rem;">Quick Actions</h3>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <button class="btn-admin" onclick="showSection('products')">
+                                    <i class="fas fa-plus"></i> Tambah Produk
+                                </button>
+                                <button class="btn-admin" onclick="showSection('promos')">
+                                    <i class="fas fa-tag"></i> Buat Promo
+                                </button>
+                                <button class="btn-admin" onclick="showSection('hero')">
+                                    <i class="fas fa-edit"></i> Edit Hero
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Editor -->
+                    <div id="hero" class="content-section">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Edit Hero Section</h2>
+                        
+                        <div class="form-group">
+                            <label>Judul Hero</label>
+                            <input type="text" class="form-control" value="Premium Coffee Experience">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea class="form-control" rows="3">Rasakan kehangatan dan cita rasa kopi spesial dari biji pilihan terbaik Indonesia</textarea>
+                        </div>
+                        
+                        <button class="btn-admin">
+                            <i class="fas fa-save"></i> Simpan Perubahan
+                        </button>
+                    </div>
+
+                    <!-- Products Management -->
+                    <div id="products" class="content-section">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Produk</h2>
+                        <p>Fitur kelola produk akan ditambahkan di sini...</p>
+                    </div>
+
+                    <!-- Promos Management -->
+                    <div id="promos" class="content-section">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Promo</h2>
+                        <p>Fitur kelola promo akan ditambahkan di sini...</p>
+                    </div>
+
+                    <!-- Orders Management -->
+                    <div id="orders" class="content-section">
+                        <h2 style="color: var(--primary); margin-bottom: 2rem;">Kelola Pesanan</h2>
+                        <p>Fitur kelola pesanan akan ditambahkan di sini...</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active menu
+            document.querySelectorAll('.admin-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
