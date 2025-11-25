@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link rel="stylesheet" href="css/custom.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew & Bean Coffee House - Premium Coffee Experience</title>
+    <meta name="description" content="Brew & Bean Coffee House - Kedai kopi premium dengan biji kopi pilihan terbaik dari seluruh Indonesia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Brew & Bean</span>
+                    </div>
+                </div>
+
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link active">Beranda</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <a href="#about" class="nav-link">Tentang</a>
+                    <a href="#locations" class="nav-link">Lokasi</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="btn-icon" id="searchToggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn-icon cart-btn" id="cartToggle">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="btn-login" id="loginToggle">
+                        <i class="fas fa-user"></i>
+                        <span>Masuk</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari kopi favorit Anda..." class="search-input">
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions">
+                    <span>Suggestions: Latte, Cappuccino, Cold Brew, Espresso</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-background">
+                    <div class="slide-content">
+                        <h1 class="hero-title">Premium Coffee Experience</h1>
+                        <p class="hero-subtitle">Rasakan kehangatan dan cita rasa kopi spesial dari biji pilihan terbaik Indonesia</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-coffee"></i>
+                                Pesan Sekarang
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lihat Lokasi
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Specialty Coffee">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-features">
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <div class="feature-content">
+                    <h4>Buka Setiap Hari</h4>
+                    <p>07:00 - 22:00 WIB</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-truck"></i>
+                <div class="feature-content">
+                    <h4>Gratis Ongkir</h4>
+                    <p>Min. pembelian Rp 50.000</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-award"></i>
+                <div class="feature-content">
+                    <h4>Premium Quality</h4>
+                    <p>Biji kopi pilihan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Menu Spesial Kami</h2>
+                <p class="section-subtitle">Temukan cita rasa kopi yang sempurna dalam setiap tegukan</p>
+            </div>
+
+            <div class="menu-filters">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">Semua Menu</button>
+                    <button class="filter-btn" data-filter="coffee">Kopi</button>
+                    <button class="filter-btn" data-filter="non-coffee">Non-Kopi</button>
+                    <button class="filter-btn" data-filter="food">Makanan</button>
+                    <button class="filter-btn" data-filter="snack">Snack</button>
+                </div>
+                <div class="sort-group">
+                    <select class="sort-select">
+                        <option value="popular">Terpopuler</option>
+                        <option value="price-low">Harga Terendah</option>
+                        <option value="price-high">Harga Tertinggi</option>
+                        <option value="newest">Terbaru</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-category="coffee">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Latte Art">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Coffee</span>
+                        <h3 class="product-name">Signature Latte</h3>
+                        <p class="product-description">Espresso dengan steamed milk dan latte art yang indah</p>
+                        <div class="product-price">
+                            <span class="price">Rp 35.000</span>
+                            <span class="original-price">Rp 40.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card" data-category="coffee">
+                    <div class="product-badge trending">Trending</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80" alt="Cold Brew">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Coffee</span>
+                        <h3 class="product-name">Cold Brew</h3>
+                        <p class="product-description">Kopi sedding dingin dengan rasa yang smooth dan rendah asam</p>
+                        <div class="product-price">
+                            <span class="price">Rp 42.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card" data-category="non-coffee">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Matcha Latte">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Non-Coffee</span>
+                        <h3 class="product-name">Matcha Latte</h3>
+                        <p class="product-description">Green tea matcha premium dengan susu steamed</p>
+                        <div class="product-price">
+                            <span class="price">Rp 38.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card" data-category="food">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Croissant">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Food</span>
+                        <h3 class="product-name">Croissant</h3>
+                        <p class="product-description">Butter croissant dengan tekstur flaky dan rasa mentega yang rich</p>
+                        <div class="product-price">
+                            <span class="price">Rp 25.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card" data-category="coffee">
+                    <div class="product-badge new">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Espresso">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Coffee</span>
+                        <h3 class="product-name">Single Origin Espresso</h3>
+                        <p class="product-description">Espresso dari biji kopi single origin dengan karakteristik unik</p>
+                        <div class="product-price">
+                            <span class="price">Rp 28.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card" data-category="snack">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Chocolate Cake">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Snack</span>
+                        <h3 class="product-name">Chocolate Lava</h3>
+                        <p class="product-description">Coklat lava cake dengan molten center yang lembut</p>
+                        <div class="product-price">
+                            <span class="price">Rp 32.000</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <button class="btn-add-cart">
+                                <i class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-cta">
+                <button class="btn btn-outline">
+                    <i class="fas fa-coffee"></i>
+                    Lihat Semua Menu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Promo Spesial</h2>
+                <p class="section-subtitle">Nikmati penawaran menarik untuk pengalaman kopi yang lebih berkesan</p>
+            </div>
+
+            <div class="promo-grid">
+                <div class="promo-card promo-large">
+                    <div class="promo-content">
+                        <span class="promo-badge">HAPPY HOUR</span>
+                        <h3>Diskon 20% Setiap Hari</h3>
+                        <p>Setiap hari pukul 14:00 - 17:00 WIB untuk semua menu</p>
+                        <button class="btn btn-light">Lihat Detail</button>
+                    </div>
+                    <div class="promo-image">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2060&q=80" alt="Happy Hour">
+                    </div>
+                </div>
+
+                <div class="promo-cards">
+                    <div class="promo-card">
+                        <div class="promo-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4>Buy 1 Get 1</h4>
+                        <p>Setiap pembelian 2 minuman, dapatkan 1 minuman gratis</p>
+                        <span class="promo-code">CODE: B1G1FREE</span>
+                    </div>
+
+                    <div class="promo-card">
+                        <div class="promo-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Free Delivery</h4>
+                        <p>Gratis ongkos kirim untuk pembelian minimal Rp 75.000</p>
+                        <span class="promo-code">CODE: FREESHIP</span>
+                    </div>
+
+                    <div class="promo-card">
+                        <div class="promo-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Member Benefits</h4>
+                        <p>Dapatkan poin dan redeem minuman gratis</p>
+                        <span class="promo-code">CODE: MEMBER20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">Cerita Kami</h2>
+                    <p class="about-description">
+                        Brew & Bean Coffee House hadir sejak 2018 dengan misi menghadirkan pengalaman kopi terbaik 
+                        bagi para penikmat kopi di Indonesia. Kami memilih biji kopi terbaik dari berbagai daerah 
+                        dan mengolahnya dengan teknik roasting yang tepat.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Varietas Kopi</p>
+                        </div>
+                        <div class="stat">
+                            <h3>3</h3>
+                            <p>Lokasi</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10K+</h3>
+                            <p>Pelanggan</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-book"></i>
+                        Baca Selengkapnya
+                    </button>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Coffee Shop Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section" id="locations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lokasi Kami</h2>
+                <p class="section-subtitle">Kunjungi kedai kopi kami di berbagai lokasi strategis</p>
+            </div>
+
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2047&q=80" alt="Jakarta Store">
+                    </div>
+                    <div class="location-content">
+                        <h3>Brew & Bean Jakarta</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Sudirman No. 123, Jakarta Selatan</p>
+                        <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                        <p><i class="fas fa-clock"></i> 07:00 - 22:00 WIB</p>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-directions"></i>
+                                Petunjuk Arah
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-coffee"></i>
+                                Pesan Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bandung Store">
+                    </div>
+                    <div class="location-content">
+                        <h3>Brew & Bean Bandung</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Dago No. 45, Bandung</p>
+                        <p><i class="fas fa-phone"></i> (022) 9876-5432</p>
+                        <p><i class="fas fa-clock"></i> 07:00 - 23:00 WIB</p>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-directions"></i>
+                                Petunjuk Arah
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-coffee"></i>
+                                Pesan Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2078&q=80" alt="Surabaya Store">
+                    </div>
+                    <div class="location-content">
+                        <h3>Brew & Bean Surabaya</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Tunjungan No. 78, Surabaya</p>
+                        <p><i class="fas fa-phone"></i> (031) 4567-8901</p>
+                        <p><i class="fas fa-clock"></i> 06:30 - 22:00 WIB</p>
+                        <div class="location-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-directions"></i>
+                                Petunjuk Arah
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-coffee"></i>
+                                Pesan Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Brew & Bean</span>
+                    </div>
+                    <p class="footer-description">
+                        Menghadirkan pengalaman kopi terbaik dengan cita rasa premium dan pelayanan yang hangat.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Menu</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Kopi Spesial</a></li>
+                        <li><a href="#">Minuman Non-Kopi</a></li>
+                        <li><a href="#">Makanan</a></li>
+                        <li><a href="#">Snack & Pastry</a></li>
+                        <li><a href="#">Promo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Layanan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Dine-In</a></li>
+                        <li><a href="#">Takeaway</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Reservasi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Informasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Kontak</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Sudirman No. 123, Jakarta</p>
+                        <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+                        <p><i class="fas fa-envelope"></i> hello@brewbean.coffee</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <span>Metode Pembayaran:</span>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2024 Brew & Bean Coffee House. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Keranjang Belanja</h3>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-body">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Keranjang belanja Anda kosong</p>
+                <button class="btn btn-primary">Mulai Belanja</button>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount">Rp 0</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">Lanjut ke Checkout</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>

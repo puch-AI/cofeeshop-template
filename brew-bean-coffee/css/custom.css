@@ -1,0 +1,36 @@
+/* Simple fix untuk Comic Sans dan rata tengah */
+* {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+}
+
+body, .container, .section-header, 
+p, h1, h2, h3, h4, h5, h6,
+span:not(.fas):not(.fab):not(.far):not(.fa),
+button span, a span {
+    text-align: center !important;
+}
+
+/* Untuk elemen khusus */
+.product-card, .promo-card, .location-card {
+    text-align: center !important;
+}
+
+.product-content, .promo-content, .location-content {
+    text-align: center !important;
+}
+
+.product-actions {
+    justify-content: center !important;
+}
+
+/* Icon tetap normal */
+.fas, .fab, .far, .fa, i {
+    font-family: 'Font Awesome 6 Free' !important;
+    text-align: center !important;
+}
+
+.btn, .btn-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
